@@ -1,0 +1,139 @@
+[
+    {
+        "name": "Vijob",
+        "type": "app",
+        "description": "Job seeking platform for Foreigners in Korea.\n- Including an AI-based resume correction feature.",
+        "important": true,
+        "image": "vijob",
+        "link": {
+            "website": "https://app.vijob.net",
+            "appstore": "https://apps.apple.com/kr/app/id6499193089"
+        }
+    },
+    {
+        "name": "Gongmap",
+        "type": "app",
+        "description": "The platform for studying abroad at prestigious global universities.",
+        "image": "gongmap",
+        "link": {
+            "website": "https://gongmap.com",
+            "appstore": "https://apps.apple.com/kr/app/id1668002059",
+            "playstore": "https://play.google.com/store/apps/details?id=com.twosun.gongmap"
+        }
+    },
+    {
+        "name": "Mailbox - DingDongU",
+        "type": "app",
+        "description": "Create and share invitations for various events and appointments",
+        "image": "dingdongu_2",
+        "link": {
+            "appstore": "https://apps.apple.com/kr/app/id64655854923",
+            "playstore": "https://play.google.com/store/apps/details?id=com.twosun.dingdongu"
+        }
+    },
+    {
+        "name": "DingDongU",
+        "type": "app",
+        "description": "A notification-based app service that categorizes and collects necessary groups\n- Member management, and service promotion",
+        "image": "dingdongu",
+        "link": {
+            "appstore": "https://apps.apple.com/kr/app/id64606854923",
+            "playstore": "https://play.google.com/store/apps/details?id=com.dingdongu.duflutter"
+        }
+    },
+    {
+        "name": "ECP+",
+        "type": "app",
+        "description": " A secure and user-friendly blockchain wallet",
+        "image": "ecp",
+        "link": {
+            "appstore": "https://apps.apple.com/kr/app/id33606854923",
+            "playstore": "https://play.google.com/store/apps/details?id=com.ecpplus.ecpplus"
+        }
+    },
+    {
+        "name": "V-Spacer",
+        "type": "app",
+        "description": "A virtualization system construction solution",
+        "image": "v_spacer",
+        "link": {
+            "website": "https://www.ahope.net/sub/ahope-vmd/"
+        }
+    },
+    {
+        "name": "Device Shield",
+        "type": "app",
+        "description": "An enterprise mobile device management solution",
+        "image": "device_shield",
+        "link": {
+            "website": "https://www.ahope.net/sub/device-shield/"
+        }
+    },
+    {
+        "name": "車選び",
+        "type": "app",
+        "description": "An used car selling platform",
+        "image": "kurumaerabi",
+        "link": {
+            "appstore": "https://apps.apple.com/kr/app/id721562592"
+        }
+    },
+    {
+        "name": "KingJim ShotDocs",
+        "type": "app",
+        "important": true,
+        "description": "A document scanning app\n- Powered by OpenCV\n- Including a document classification feature",
+        "image": "kingjim_shotdocs",
+        "link": {
+            "appstore": "https://apps.apple.com/kr/app/id535706678"
+        }
+    },
+    {
+        "name": "flutter_clone",
+        "type": "openSource",
+        "type_detail": "Flutter package",
+        "description": "Dart console application designed to analyze Dart/Flutter project codebases",
+        "important": true,
+        "link": {
+            "github": "https://github.com/haitr/flutter_clone"
+        }
+    },
+    {
+        "name": "rxflutterify_binding",
+        "type": "openSource",
+        "type_detail": "Flutter package",
+        "description": "Specialized binding to RxDart for Flutter widgets",
+        "link": {
+            "github": "https://github.com/haitr/flutter_clone/tree/main/packages/rxflutterify_binding"
+        }
+    },
+    {
+        "name": "riverpod_widget",
+        "type": "openSource",
+        "type_detail": "Flutter package",
+        "important": true,
+        "description": "Specialized binding to riverpod for Flutter widgets",
+        "link": {
+            "github": "https://github.com/haitr/flutter_clone/tree/main/packages/riverpod_widget"
+        }
+    },
+    {
+        "name": "Language Comparison",
+        "type": "openSource",
+        "type_detail": "Website",
+        "description": "A website that compares the syntax of different programming languages",
+        "link": {
+            "github": "https://github.com/haitr/pl-cheatsheet-comparison",
+            "website": "https://haitr.github.io/pl-cheatsheet-comparison/"
+        }
+    },
+    {
+        "name": "go_router_path_builder",
+        "type": "openSource",
+        "type_detail": "Flutter package",
+        "description": "A Flutter package that provides a type-safe way to build GoRouter paths",
+        "link": {
+            "github": "https://github.com/haitr/go_router_path_builder"
+        }
+    }
+]

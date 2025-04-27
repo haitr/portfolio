@@ -1,0 +1,30 @@
+[
+    {
+        "name": "Dart",
+        "percentage": 100
+    },
+    {
+        "name": "Flutter",
+        "percentage": 100
+    },
+    {
+        "name": "Python",
+        "percentage": 40
+    },
+    {
+        "name": "Swift",
+        "percentage": 70
+    },
+    {
+        "name": "Kotlin",
+        "percentage": 40
+    },
+    {
+        "name": "JavaScript",
+        "percentage": 80
+    },
+    {
+        "name": "TypeScript",
+        "percentage": 75
+    }
+]
