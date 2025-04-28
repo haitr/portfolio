@@ -19,14 +19,14 @@ class ProjectScreen extends ConsumerStatefulWidget {
 }
 
 class _ProjectScreenState extends ConsumerState<ProjectScreen> with SingleTickerProviderStateMixin {
-  late AnimationController _controller;
-  late Animation<double> _animation;
+  // late AnimationController _controller;
+  // late Animation<double> _animation;
 
   @override
   void initState() {
     super.initState();
-    _controller = AnimationController(duration: const Duration(milliseconds: 150), vsync: this);
-    _animation = Tween<double>(begin: 0.0, end: 1.0).animate(_controller);
+    // _controller = AnimationController(duration: const Duration(milliseconds: 150), vsync: this);
+    // _animation = Tween<double>(begin: 0.0, end: 1.0).animate(_controller);
   }
 
   @override
@@ -55,32 +55,48 @@ class _ProjectScreenState extends ConsumerState<ProjectScreen> with SingleTicker
   }
 
   Widget _projectSection(BuildContext context, List<Project> project) {
-    return SizedBox(
-      width: 500,
-      child: Column(
-        spacing: 24,
-        children: [
-          Text('<applications>', style: context.textTheme.displaySmall!.copyWith(color: context.colorScheme.primary)),
-          h16,
-          ...project.where((project) => project.type == ProjectType.app).map((project) => _buildCard(context, project)),
-        ],
-      ),
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        return SizedBox(
+          width: constraints.maxWidth.clamp(300, 500),
+          child: Column(
+            spacing: 24,
+            children: [
+              Text(
+                '<applications>',
+                style: context.textTheme.displaySmall!.copyWith(color: context.colorScheme.primary),
+              ),
+              h16,
+              ...project
+                  .where((project) => project.type == ProjectType.app)
+                  .map((project) => _buildCard(context, project)),
+            ],
+          ),
+        );
+      },
     );
   }
 
   Widget _openSourceSection(BuildContext context, List<Project> project) {
-    return SizedBox(
-      width: 500,
-      child: Column(
-        spacing: 24,
-        children: [
-          Text('<open source>', style: context.textTheme.displaySmall!.copyWith(color: context.colorScheme.primary)),
-          h16,
-          ...project
-              .where((project) => project.type == ProjectType.openSource)
-              .map((project) => _buildCard(context, project)),
-        ],
-      ),
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        return SizedBox(
+          width: constraints.maxWidth.clamp(300, 500),
+          child: Column(
+            spacing: 24,
+            children: [
+              Text(
+                '<open source>',
+                style: context.textTheme.displaySmall!.copyWith(color: context.colorScheme.primary),
+              ),
+              h16,
+              ...project
+                  .where((project) => project.type == ProjectType.openSource)
+                  .map((project) => _buildCard(context, project)),
+            ],
+          ),
+        );
+      },
     );
   }
 

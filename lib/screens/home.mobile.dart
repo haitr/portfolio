@@ -20,7 +20,10 @@ class HomeMobile extends StatelessWidget {
 
   Widget _buildBody(BuildContext context) {
     return SizedBox.expand(
-      child: SingleChildScrollView(padding: const EdgeInsets.only(top: 96), child: _content(context)),
+      child: SingleChildScrollView(
+        padding: const EdgeInsets.only(top: 96, left: 16, right: 16),
+        child: _content(context),
+      ),
     );
   }
 

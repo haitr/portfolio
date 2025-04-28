@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:portfolio/utils/color.dart';
 import 'package:portfolio/utils/context.dart';
-import 'package:responsive_framework/responsive_framework.dart';
 
 import '../utils/constants.dart';
 
@@ -43,8 +42,7 @@ class _LeadingCircleButtonState extends State<LeadingCircleButton> with SingleTi
 
   @override
   Widget build(BuildContext context) {
-    final needAnimation = ResponsiveBreakpoints.of(context).breakpoint.name != kSmallBreakPoint;
-    if (!needAnimation) {
+    if (shouldRenderSmallLayout(context)) {
       return ElevatedButton(onPressed: widget.onPressed, child: Text(widget.text));
     }
     final duration = const Duration(milliseconds: 200);

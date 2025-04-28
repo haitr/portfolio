@@ -15,7 +15,7 @@ class Project {
   final ProjectType type;
   final bool important;
   final String? typeDetail;
-
+  final bool show;
   Project({
     required this.name,
     required this.description,
@@ -24,6 +24,7 @@ class Project {
     required this.type,
     required this.important,
     this.typeDetail,
+    required this.show,
   });
 
   factory Project.fromJson(Map<String, dynamic> json) {
@@ -35,6 +36,7 @@ class Project {
       type: ProjectType.fromString(json['type'] as String),
       important: json['important'] ?? false,
       typeDetail: json['type_detail'] as String?,
+      show: json['show'] ?? false,
     );
   }
 }
