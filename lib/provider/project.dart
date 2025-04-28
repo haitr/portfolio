@@ -8,7 +8,10 @@ import '../models/project.dart';
 final projectProvider = FutureProvider<List<Project>>((ref) async {
   final jsonString = await rootBundle.loadString('assets/data/projects.json');
   final jsonList = json.decode(jsonString) as List;
-  return jsonList.map((data) => Project.fromJson(data as Map<String, dynamic>)).toList();
+  return jsonList
+      .map((data) => Project.fromJson(data as Map<String, dynamic>))
+      .where((project) => project.show)
+      .toList();
 });
 
 final importantProjectProvider = Provider<List<Project>>((ref) {

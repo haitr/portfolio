@@ -4,7 +4,6 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:portfolio/utils/color.dart';
 import 'package:portfolio/utils/context.dart';
 import 'package:portfolio/widgets/leading_circle_button.dart';
-import 'package:responsive_framework/responsive_framework.dart';
 
 import '../models/project.dart';
 import '../service/asset.dart';
@@ -28,30 +27,34 @@ class _RecentProjectSectionState extends State<RecentProjectSection> {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      width: 500,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        spacing: 24,
-        children: [
-          // title
-          Text(
-            '<recent projects>',
-            style: context.textTheme.displaySmall!.copyWith(color: context.colorScheme.primary),
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        return SizedBox(
+          width: constraints.maxWidth.clamp(300, 500),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            spacing: 24,
+            children: [
+              // title
+              Text(
+                '<recent projects>',
+                style: context.textTheme.displaySmall!.copyWith(color: context.colorScheme.primary),
+              ),
+              // recent projects
+              ...widget.projects.expandIndexed(
+                (index, project) => [RecentProjectCard(project: project, index: index + 1), h16],
+              ),
+              // view all projects
+              LeadingCircleButton(
+                onPressed: () => Navigator.of(context).pushNamed('/projects'),
+                text: 'View My Works',
+                width: 180,
+                initPercentage: 0.32,
+              ),
+            ],
           ),
-          // recent projects
-          ...widget.projects.expandIndexed(
-            (index, project) => [RecentProjectCard(project: project, index: index + 1), h16],
-          ),
-          // view all projects
-          LeadingCircleButton(
-            onPressed: () => Navigator.of(context).pushNamed('/projects'),
-            text: 'View My Works',
-            width: 180,
-            initPercentage: 0.32,
-          ),
-        ],
-      ),
+        );
+      },
     );
   }
 }
@@ -67,86 +70,86 @@ class RecentProjectCard extends StatefulWidget {
 }
 
 class _RecentProjectCardState extends State<RecentProjectCard> with SingleTickerProviderStateMixin {
-  late AnimationController _controller;
-  late Animation<double> _animation;
-  late Color _numberColor;
-  var _isColorInitialized = false;
+  late AnimationController controller;
+  late Animation<double> animation;
+  late Color numberColor;
+  var isColorInitialized = false;
 
   @override
   void initState() {
     super.initState();
-    _controller = AnimationController(duration: const Duration(milliseconds: 150), vsync: this);
-    _animation = Tween<double>(begin: 0.0, end: 1.0).animate(_controller);
+    controller = AnimationController(duration: const Duration(milliseconds: 150), vsync: this);
+    animation = Tween<double>(begin: 0.0, end: 1.0).animate(controller);
   }
 
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
-    if (!_isColorInitialized) {
-      _numberColor = context.colorScheme.primary.random;
-      _isColorInitialized = true;
+    if (!isColorInitialized) {
+      numberColor = context.colorScheme.primary.random;
+      isColorInitialized = true;
     }
   }
 
   @override
   void dispose() {
-    _controller.dispose();
+    controller.dispose();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
     final actualWidget = AnimatedBuilder(
-      animation: _animation,
+      animation: animation,
       builder:
           (_, child) => Stack(
             clipBehavior: Clip.none,
             children: [
               Transform.translate(
-                offset: Offset(-36 * (1 - _animation.value), 0),
+                offset: Offset(-36 * (1 - animation.value), 0),
                 child: Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     // experience number
-                    Opacity(opacity: 1 - _animation.value, child: _buildNumber(context, widget.index)),
+                    Opacity(opacity: 1 - animation.value, child: buildNumber(context, widget.index)),
                     // spacing
                     w32,
                     // experience details
                     Expanded(
                       child: switch (widget.project.type) {
-                        ProjectType.app => _buildAppStyle(context),
-                        ProjectType.openSource => _buildLibraryStyle(context),
+                        ProjectType.app => buildAppStyle(context),
+                        ProjectType.openSource => buildLibraryStyle(context),
                       },
                     ),
                   ],
                 ),
               ),
               Positioned(
-                left: 8 * (1 - _animation.value),
+                left: 8 * (1 - animation.value),
                 top: 16,
-                child: Opacity(opacity: _animation.value, child: _projectDetails(context)),
+                child: Opacity(opacity: animation.value, child: projectDetails(context)),
               ),
             ],
           ),
     );
-    final needAnimation = ResponsiveBreakpoints.of(context).breakpoint.name != kSmallBreakPoint;
+    final needAnimation = !shouldRenderSmallLayout(context);
     if (!needAnimation) {
-      _controller.value = 1.0;
+      controller.value = 1.0;
       return actualWidget;
     }
     return MouseRegion(
       onEnter: (_) {
-        if (needAnimation) _controller.forward();
+        if (needAnimation) controller.forward();
       },
       onExit: (_) {
-        if (needAnimation) _controller.reverse();
+        if (needAnimation) controller.reverse();
       },
       child: actualWidget,
     );
   }
 
-  Widget _projectDetails(BuildContext context) {
+  Widget projectDetails(BuildContext context) {
     const iconSize = 20.0;
     return Column(
       spacing: 8,
@@ -154,7 +157,7 @@ class _RecentProjectCardState extends State<RecentProjectCard> with SingleTicker
       children: [
         Text(
           widget.index.toString().padLeft(2, '0'),
-          style: context.textTheme.headlineSmall!.copyWith(color: _numberColor),
+          style: context.textTheme.headlineSmall!.copyWith(color: numberColor),
         ),
         Text(
           widget.project.name,
@@ -211,28 +214,31 @@ class _RecentProjectCardState extends State<RecentProjectCard> with SingleTicker
     );
   }
 
-  Widget _buildNumber(BuildContext context, int index) {
+  Widget buildNumber(BuildContext context, int index) {
     final indexString = index.toString().padLeft(2, '0');
     return Row(
       children: [
         Transform.translate(
           offset: const Offset(0.0, 12.0),
-          child: Text("//", style: context.textTheme.headlineSmall!.copyWith(color: _numberColor)),
+          child: Text("//", style: context.textTheme.headlineSmall!.copyWith(color: numberColor)),
         ),
         SizedBox(
           width: 50,
           child: FittedBox(
-            child: Text(indexString, style: context.textTheme.headlineSmall!.copyWith(color: _numberColor)),
+            child: Text(indexString, style: context.textTheme.headlineSmall!.copyWith(color: numberColor)),
           ),
         ),
       ],
     );
   }
 
-  Widget _buildAppStyle(BuildContext context) {
+  Widget buildAppStyle(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
+        // project name
+        Text(widget.project.name, style: context.textTheme.displaySmall),
+        h16,
         // image
         LayoutBuilder(
           builder: (context, constraints) {
@@ -241,7 +247,7 @@ class _RecentProjectCardState extends State<RecentProjectCard> with SingleTicker
               children: [
                 Positioned.fill(
                   child: Opacity(
-                    opacity: 1 - _animation.value,
+                    opacity: 1 - animation.value,
                     child: Container(
                       decoration: BoxDecoration(
                         border: Border.all(color: context.colorScheme.primary, style: BorderStyle.solid),
@@ -256,7 +262,7 @@ class _RecentProjectCardState extends State<RecentProjectCard> with SingleTicker
                 ),
                 Positioned(
                   left: 0,
-                  right: constraints.maxWidth * (1 - _animation.value),
+                  right: constraints.maxWidth * (1 - animation.value),
                   top: 0,
                   bottom: 0,
                   child: Container(color: context.colorScheme.surface.withValues(alpha: 0.5)),
@@ -265,20 +271,17 @@ class _RecentProjectCardState extends State<RecentProjectCard> with SingleTicker
             );
           },
         ),
-        // project name
-        h16,
-        Text(widget.project.name, style: context.textTheme.displaySmall),
       ],
     );
   }
 
-  Widget _buildLibraryStyle(BuildContext context) {
+  Widget buildLibraryStyle(BuildContext context) {
     return LayoutBuilder(
       builder: (context, constraints) {
         return Stack(
           children: [
             Opacity(
-              opacity: 1 - _animation.value,
+              opacity: 1 - animation.value,
               child: Container(
                 height: packageCardHeight,
                 decoration: BoxDecoration(
@@ -308,7 +311,7 @@ class _RecentProjectCardState extends State<RecentProjectCard> with SingleTicker
                     ),
                   ),
                   Positioned(
-                    left: constraints.maxWidth / 2 + 16,
+                    left: constraints.maxWidth / 2 - 16,
                     bottom: 8,
                     child: Row(
                       spacing: 8,
@@ -318,8 +321,8 @@ class _RecentProjectCardState extends State<RecentProjectCard> with SingleTicker
                           shaderCallback:
                               (bounds) => LinearGradient(
                                 colors: [
-                                  context.colorScheme.primary.withValues(alpha: 0.5),
                                   context.colorScheme.primary.withValues(alpha: 0.3),
+                                  context.colorScheme.primary.withValues(alpha: 0.05),
                                 ],
                               ).createShader(bounds),
                           child: FaIcon(FontAwesomeIcons.at, size: 56),
@@ -337,7 +340,7 @@ class _RecentProjectCardState extends State<RecentProjectCard> with SingleTicker
             Positioned(
               child: Container(
                 height: packageCardHeight,
-                width: constraints.maxWidth * _animation.value,
+                width: constraints.maxWidth * animation.value,
                 color: context.colorScheme.surface.withValues(alpha: 0.5),
               ),
             ),
