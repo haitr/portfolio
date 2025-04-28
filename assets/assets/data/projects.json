@@ -1,5 +1,6 @@
 [
     {
+        "show": true,
         "name": "Vijob",
         "type": "app",
         "description": "Job seeking platform for Foreigners in Korea.\n- Including an AI-based resume correction feature.",
@@ -7,10 +8,12 @@
         "image": "vijob",
         "link": {
             "website": "https://app.vijob.net",
-            "appstore": "https://apps.apple.com/kr/app/id6499193089"
+            "appstore": "https://apps.apple.com/kr/app/id6499193089",
+            "playstore": "https://play.google.com/store/apps/details?id=net.vijob.app"
         }
     },
     {
+        "show": true,
         "name": "Gongmap",
         "type": "app",
         "description": "The platform for studying abroad at prestigious global universities.",
@@ -22,6 +25,7 @@
         }
     },
     {
+        "show": true,
         "name": "Mailbox - DingDongU",
         "type": "app",
         "description": "Create and share invitations for various events and appointments",
@@ -32,6 +36,7 @@
         }
     },
     {
+        "show": true,
         "name": "DingDongU",
         "type": "app",
         "description": "A notification-based app service that categorizes and collects necessary groups\n- Member management, and service promotion",
@@ -42,6 +47,7 @@
         }
     },
     {
+        "show": true,
         "name": "ECP+",
         "type": "app",
         "description": " A secure and user-friendly blockchain wallet",
@@ -52,6 +58,7 @@
         }
     },
     {
+        "show": true,
         "name": "V-Spacer",
         "type": "app",
         "description": "A virtualization system construction solution",
@@ -61,6 +68,7 @@
         }
     },
     {
+        "show": true,
         "name": "Device Shield",
         "type": "app",
         "description": "An enterprise mobile device management solution",
@@ -70,6 +78,7 @@
         }
     },
     {
+        "show": true,
         "name": "車選び",
         "type": "app",
         "description": "An used car selling platform",
@@ -79,6 +88,7 @@
         }
     },
     {
+        "show": true,
         "name": "KingJim ShotDocs",
         "type": "app",
         "important": true,
@@ -89,6 +99,7 @@
         }
     },
     {
+        "show": true,
         "name": "flutter_clone",
         "type": "openSource",
         "type_detail": "Flutter package",
@@ -99,6 +110,7 @@
         }
     },
     {
+        "show": false,
         "name": "rxflutterify_binding",
         "type": "openSource",
         "type_detail": "Flutter package",
@@ -108,6 +120,7 @@
         }
     },
     {
+        "show": true,
         "name": "riverpod_widget",
         "type": "openSource",
         "type_detail": "Flutter package",
@@ -118,6 +131,7 @@
         }
     },
     {
+        "show": true,
         "name": "Language Comparison",
         "type": "openSource",
         "type_detail": "Website",
@@ -128,6 +142,7 @@
         }
     },
     {
+        "show": false,
         "name": "go_router_path_builder",
         "type": "openSource",
         "type_detail": "Flutter package",
