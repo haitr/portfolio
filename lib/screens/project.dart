@@ -60,7 +60,7 @@ class _ProjectScreenState extends ConsumerState<ProjectScreen> with SingleTicker
         return SizedBox(
           width: constraints.maxWidth.clamp(300, 500),
           child: Column(
-            spacing: 24,
+            spacing: 32,
             children: [
               Text(
                 '<applications>',
@@ -83,7 +83,7 @@ class _ProjectScreenState extends ConsumerState<ProjectScreen> with SingleTicker
         return SizedBox(
           width: constraints.maxWidth.clamp(300, 500),
           child: Column(
-            spacing: 24,
+            spacing: 32,
             children: [
               Text(
                 '<open source>',
@@ -183,44 +183,38 @@ class _ProjectScreenState extends ConsumerState<ProjectScreen> with SingleTicker
           spacing: 8,
           children:
               () sync* {
-                yield Text(
-                  'Reference: ',
-                  style: context.textTheme.bodyMedium!.copyWith(color: context.colorScheme.primary),
-                );
-                if (project.link.github case var url?) {
+                if ([
+                  project.link.github,
+                  project.link.appstore,
+                  project.link.playstore,
+                  project.link.website,
+                ].any((link) => link != null && !link.startsWith('[hide]'))) {
+                  yield Text(
+                    'Reference: ',
+                    style: context.textTheme.bodyMedium!.copyWith(color: context.colorScheme.primary),
+                  );
+                }
+                if (project.link.github case var url? when !url.startsWith('[hide]')) {
                   yield IconButton(
-                    onPressed: () {
-                      openUrl(url);
-                    },
+                    onPressed: () => openUrl(url),
                     icon: FaIcon(FontAwesomeIcons.github, size: iconSize),
                   );
                 }
-                if (project.link.appstore case var url?) {
-                  yield IconButton(
-                    onPressed: () {
-                      openUrl(url);
-                    },
-                    icon: FaIcon(FontAwesomeIcons.apple, size: iconSize),
-                  );
+                if (project.link.appstore case var url? when !url.startsWith('[hide]')) {
+                  yield IconButton(onPressed: () => openUrl(url), icon: FaIcon(FontAwesomeIcons.apple, size: iconSize));
                 }
-                if (project.link.playstore case var url?) {
+                if (project.link.playstore case var url? when !url.startsWith('[hide]')) {
                   yield IconButton(
-                    onPressed: () {
-                      openUrl(url);
-                    },
+                    onPressed: () => openUrl(url),
                     icon: FaIcon(FontAwesomeIcons.googlePlay, size: iconSize),
                   );
                 }
-                if (project.link.website case var url?) {
-                  yield IconButton(
-                    onPressed: () {
-                      openUrl(url);
-                    },
-                    icon: FaIcon(FontAwesomeIcons.link, size: iconSize),
-                  );
+                if (project.link.website case var url? when !url.startsWith('[hide]')) {
+                  yield IconButton(onPressed: () => openUrl(url), icon: FaIcon(FontAwesomeIcons.link, size: iconSize));
                 }
               }().toList(),
         ),
+        Divider(color: context.colorScheme.primary.withValues(alpha: 0.5)),
       ],
     );
   }

@@ -176,37 +176,23 @@ class _RecentProjectCardState extends State<RecentProjectCard> with SingleTicker
           spacing: 8,
           children:
               () sync* {
-                if (widget.project.link.github case var url?) {
+                if (widget.project.link.github case var url? when !url.startsWith('[hide]')) {
                   yield IconButton(
-                    onPressed: () {
-                      openUrl(url);
-                    },
+                    onPressed: () => openUrl(url),
                     icon: FaIcon(FontAwesomeIcons.github, size: iconSize),
                   );
                 }
-                if (widget.project.link.appstore case var url?) {
-                  yield IconButton(
-                    onPressed: () {
-                      openUrl(url);
-                    },
-                    icon: FaIcon(FontAwesomeIcons.apple, size: iconSize),
-                  );
+                if (widget.project.link.appstore case var url? when !url.startsWith('[hide]')) {
+                  yield IconButton(onPressed: () => openUrl(url), icon: FaIcon(FontAwesomeIcons.apple, size: iconSize));
                 }
-                if (widget.project.link.playstore case var url?) {
+                if (widget.project.link.playstore case var url? when !url.startsWith('[hide]')) {
                   yield IconButton(
-                    onPressed: () {
-                      openUrl(url);
-                    },
+                    onPressed: () => openUrl(url),
                     icon: FaIcon(FontAwesomeIcons.googlePlay, size: iconSize),
                   );
                 }
-                if (widget.project.link.website case var url?) {
-                  yield IconButton(
-                    onPressed: () {
-                      openUrl(url);
-                    },
-                    icon: FaIcon(FontAwesomeIcons.link, size: iconSize),
-                  );
+                if (widget.project.link.website case var url? when !url.startsWith('[hide]')) {
+                  yield IconButton(onPressed: () => openUrl(url), icon: FaIcon(FontAwesomeIcons.link, size: iconSize));
                 }
               }().toList(),
         ),

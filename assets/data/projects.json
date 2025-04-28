@@ -20,8 +20,8 @@
         "image": "gongmap",
         "link": {
             "website": "https://gongmap.com",
-            "appstore": "https://apps.apple.com/kr/app/id1668002059",
-            "playstore": "https://play.google.com/store/apps/details?id=com.twosun.gongmap"
+            "appstore": "[hide]https://apps.apple.com/kr/app/id1668002059",
+            "playstore": "[hide]https://play.google.com/store/apps/details?id=com.twosun.gongmap"
         }
     },
     {
@@ -31,8 +31,8 @@
         "description": "Create and share invitations for various events and appointments",
         "image": "dingdongu_2",
         "link": {
-            "appstore": "https://apps.apple.com/kr/app/id64655854923",
-            "playstore": "https://play.google.com/store/apps/details?id=com.twosun.dingdongu"
+            "appstore": "[hide]https://apps.apple.com/kr/app/id64655854923",
+            "playstore": "[hide]https://play.google.com/store/apps/details?id=com.twosun.dingdongu"
         }
     },
     {
@@ -42,8 +42,8 @@
         "description": "A notification-based app service that categorizes and collects necessary groups\n- Member management, and service promotion",
         "image": "dingdongu",
         "link": {
-            "appstore": "https://apps.apple.com/kr/app/id64606854923",
-            "playstore": "https://play.google.com/store/apps/details?id=com.dingdongu.duflutter"
+            "appstore": "[hide]https://apps.apple.com/kr/app/id64606854923",
+            "playstore": "[hide]https://play.google.com/store/apps/details?id=com.dingdongu.duflutter"
         }
     },
     {
@@ -53,8 +53,8 @@
         "description": " A secure and user-friendly blockchain wallet",
         "image": "ecp",
         "link": {
-            "appstore": "https://apps.apple.com/kr/app/id33606854923",
-            "playstore": "https://play.google.com/store/apps/details?id=com.ecpplus.ecpplus"
+            "appstore": "[hide]https://apps.apple.com/kr/app/id33606854923",
+            "playstore": "[hide]https://play.google.com/store/apps/details?id=com.ecpplus.ecpplus"
         }
     },
     {
