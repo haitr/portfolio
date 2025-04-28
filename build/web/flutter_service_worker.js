@@ -3,11 +3,11 @@ const MANIFEST = 'flutter-app-manifest';
 const TEMP = 'flutter-temp-cache';
 const CACHE_NAME = 'flutter-app-cache';
 
-const RESOURCES = {"flutter_bootstrap.js": "a30fc683772b58858a1a733e4bbaa47f",
+const RESOURCES = {"flutter_bootstrap.js": "931523a8db6b2315352b7f8d74a9aa4a",
 "version.json": "8633c0f103f553e6644d5206a31f4b9f",
 "index.html": "6a50c63499e1051e50e643e1607c87dc",
 "/": "6a50c63499e1051e50e643e1607c87dc",
-"main.dart.js": "d3192d657cf0a268e5f9f92111d53562",
+"main.dart.js": "60a4ead39199b63eb396cdd5d365b800",
 "flutter.js": "76f08d47ff9f5715220992f993002504",
 "favicon.png": "5dcef449791fa27946b3d35ad8803796",
 "icons/Icon-192.png": "ac9a721a12bbc803b44f645561ecb1e1",
@@ -37,7 +37,7 @@ const RESOURCES = {"flutter_bootstrap.js": "a30fc683772b58858a1a733e4bbaa47f",
 "assets/assets/images/bookreco.jpg": "0cc802c54d591f69514b0f308574a0b2",
 "assets/assets/images/vijob.png": "bac78336da22a0b8861370bcb19c7275",
 "assets/assets/images/v_spacer.png": "ba20bef74d8c94cb15fc9a8d32b1c98d",
-"assets/assets/data/projects.json": "4091eaf063c79149553f94b3c0648260",
+"assets/assets/data/projects.json": "8caad85ada9296249ea134fc7fc1800a",
 "assets/assets/data/skills.json": "50b331eab85e22cd052e69a0695d1b7c",
 "canvaskit/skwasm_st.js": "d1326ceef381ad382ab492ba5d96f04d",
 "canvaskit/skwasm.js": "f2ad9363618c5f62e813740099a80e63",
